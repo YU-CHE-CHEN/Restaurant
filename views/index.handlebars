@@ -51,6 +51,9 @@
           </div>
           <a href="./lists/{{ this._id }}/edit">Edit</a>
           <a href="./lists/{{ this._id }}">detail</a>
+          <form action="./lists/{{ this._id }}/delete" method="POST" style="display: inline;">
+            <button type="submit">delete</button>
+          </form>
         </a>
         {{/each}}
 
