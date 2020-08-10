@@ -1,0 +1,46 @@
+<div class="alert alert-dark text-center font-weight-bolder" style="font-size: larger;" role="alert">
+  餐廳資料修改
+  <form action="/lists/{{ restaurant._id }}" method="POST" style="width: 50%; margin: auto">
+    <div>
+      <label for=" name">餐廳名稱</label>
+      <input type="text" placeholder="餐廳名稱修改..." name="name" id="name" value="{{ restaurant.name }}">
+    </div>
+    <div>
+      <label for=" name_en">餐廳英文名稱</label>
+      <input type="text" placeholder="餐廳英文名稱修改..." name="name_en" id="name_en" value="{{ restaurant.name_en }}">
+    </div>
+    <div>
+      <label for=" category">餐廳分類</label>
+      <input type="text" placeholder="餐廳分類修改..." name="category" id="category" value="{{ restaurant.category }}">
+    </div>
+    <div>
+      <label for=" image">餐廳圖片</label>
+      <input type="text" placeholder="餐廳圖片網址修改..." name="image" id="image" value="{{ restaurant.image }}">
+    </div>
+    <div>
+      <label for=" location">餐廳地址</label>
+      <input type="text" placeholder="餐廳地址修改..." name="location" id="location" value="{{ restaurant.location }}">
+    </div>
+    <div>
+      <label for=" phone">餐廳電話</label>
+      <input type="text" placeholder="餐廳電話修改..." name="phone" id="phone" value="{{ restaurant.phone }}">
+    </div>
+    <div>
+      <label for=" google_map">餐廳地圖</label>
+      <input type="text" placeholder="餐廳地圖網址修改..." name="google_map" id="google_map"
+        value="{{ restaurant.google_map }}">
+    </div>
+    <div>
+      <label for=" rating">餐廳評分</label>
+      <input type="text" placeholder="餐廳評分修改..." name="rating" id="rating" value="{{ restaurant.rating }}">
+    </div>
+    <div>
+      <label for=" description">餐廳描述</label>
+      <input type="text" placeholder="餐廳描述修改..." name="description" id="description"
+        value="{{ restaurant.description }}">
+    </div>
+    <div>
+
+      <button type="submit" class="btn btn-primary">確認修改</button>
+    </div>
+  </form>
