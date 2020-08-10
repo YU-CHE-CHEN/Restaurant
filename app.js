@@ -7,6 +7,7 @@ const port = 3000
 const exphbs = require('express-handlebars')
 
 const restaurantLists = require('./models/restaurantList')
+const bodyParser = require('body-parser')
 
 //add and connect the mongoose
 const mongoose = require('mongoose')
@@ -29,14 +30,35 @@ app.set('view engine', 'handlebars')
 //setting static files
 app.use(express.static('public'))
 
+//setting body-parser
+app.use(bodyParser.urlencoded({ extended: true }))
+
 //route setting
 app.get('/', (req, res) => {
   restaurantLists.find()
     .lean()
     .then(Lists => res.render('index', { Lists }))
     .catch(error => console.error(error))
-
 })
+app.get('/lists/new', (req, res) => {
+  return res.render('new')
+})
+
+app.post('/lists', (req, res) => {
+  const name = req.body.name
+  return restaurantLists.create({ name })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+app.get('/lists/:id', (req, res) => {
+  const id = req.params.id
+  return restaurantLists.findById(id)
+    .lean()
+    .then((restaurant) => res.render('detail', { restaurant }))
+    .catch(error => console.log(error))
+})
+
 app.get('/restaurants/:restaurant_id', (req, res) => {
   const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
   res.render('show', { restaurant: restaurant })
