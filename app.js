@@ -1,6 +1,5 @@
 //require package uses in the project
 const express = require('express')
-const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
@@ -11,17 +10,10 @@ const app = express()
 const port = 3000
 
 const routes = require('./routes')
+require('./config/mongoose')
 
 
 
-mongoose.connect('mongodb://localhost/Restaurant_list', { useNewUrlParser: true, useUnifiedTopology: true })
-const db = mongoose.connection
-db.on('error', () => {
-  console.log('mongoose errror!')
-})
-db.once('open', () => {
-  console.log('mongoose connected!')
-})
 
 
 
