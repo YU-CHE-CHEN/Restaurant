@@ -1,6 +1,6 @@
 <div class="alert alert-dark text-center font-weight-bolder" style="font-size: larger;" role="alert">
   餐廳資料修改
-  <form action="/lists/{{ restaurant._id }}" method="POST" style="width: 50%; margin: auto">
+  <form action="/lists/{{ restaurant._id }}?_method=PUT" method="POST" style="width: 50%; margin: auto">
     <div>
       <label for=" name">餐廳名稱</label>
       <input type="text" placeholder="餐廳名稱修改..." name="name" id="name" value="{{ restaurant.name }}">
