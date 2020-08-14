@@ -38,4 +38,4 @@ const restaurantLiseSchema = new Schema({
     required: false
   }
 })
-module.exports = mongoose.model('RestaurantList', restaurantLiseSchema)
+module.exports = mongoose.model('RestaurantLists', restaurantLiseSchema)
