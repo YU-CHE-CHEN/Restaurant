@@ -24,6 +24,31 @@
   </div>
 </div>
 
+<!-- sort -->
+<div class="container sort-button">
+  <div class="row justify-content-end mt-3">
+    <div class="col-2 btn-group">
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn btn-danger">排序</button>
+
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-outline-danger" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{#if sortby}} {{sortby}} {{/if}}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="dropdown-item" href="/sort/name/asc">名稱 (A -> Z)</a>
+            <a class="dropdown-item" href="/sort/name/desc">名稱 (Z -> A)</a>
+            <a class="dropdown-item" href="/sort/category/asc">類別</a>
+            <a class="dropdown-item" href="/sort/location/asc">地區</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <!-- restaurant list -->
 
