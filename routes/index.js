@@ -5,14 +5,16 @@ const lists = require('./modules/lists')
 const search = require('./modules/search')
 const sort = require('./modules/sort')
 const users = require('./modules/users')
+const auth = require('./modules/auth')
 const { authenticator } = require('../middleware/auth')
 
 
+router.use('/users', users)
 router.use('/lists', authenticator, lists)
 router.use('/search', authenticator, search)
 router.use('/sort', authenticator, sort)
-router.use('/users', users)
-router.use('/', authenticator, home)
+router.use('/auth', auth)
+router.use('/', home)
 
 
 module.exports = router

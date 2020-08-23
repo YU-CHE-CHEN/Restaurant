@@ -5,9 +5,12 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const restaurantLists = require('./models/restaurantList')
 const app = express()
-const port = 3000
+const port = process.env.PORT
 const usePassport = require('./config/passport')
 const routes = require('./routes')
 const { use } = require('./routes')
@@ -21,7 +24,7 @@ app.set('view engine', 'handlebars')
 
 //setting express-session
 app.use(session({
-  secret: 'ThisiIsMySecret',
+  secret: "ThisiIsMySecret",
   resave: false,
   saveUninitialized: true
 }))
