@@ -1,26 +1,29 @@
 //require package uses in the project
 const express = require('express')
+const session = require('express-session')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const restaurantLists = require('./models/restaurantList')
 const app = express()
 const port = 3000
-const session = require('express-session')
 const usePassport = require('./config/passport')
 const routes = require('./routes')
 const { use } = require('./routes')
 require('./config/mongoose')
 
 
-
-
-
-
 //setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }
 ))
 app.set('view engine', 'handlebars')
+
+//setting express-session
+app.use(session({
+  secret: 'ThisiIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
 
 //setting static files
 app.use(express.static('public'))
@@ -40,12 +43,6 @@ app.use((req, res, next) => {
 
 app.use(routes)
 
-//setting express-session
-app.use(session({
-  secret: 'ThisiIsMySecret',
-  resave: false,
-  saveUninitialized: true
-}))
 
 
 //start and listen on the express server
