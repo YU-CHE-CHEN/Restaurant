@@ -14,7 +14,7 @@ router.use('/lists', authenticator, lists)
 router.use('/search', authenticator, search)
 router.use('/sort', authenticator, sort)
 router.use('/auth', auth)
-router.use('/', home)
+router.use('/', authenticator, home)
 
 
 module.exports = router

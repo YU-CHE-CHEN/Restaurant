@@ -13,8 +13,9 @@ router.get('/:option/:sort', (req, res) => {
   const name = req.params.option
   const sort = req.params.sort
   const select = `${name}${sort}`
+  const userId = req.user._id
 
-  restaurantLists.find()
+  restaurantLists.find({ userId })
     .lean()
     .sort({ [name]: sort })
     .then(Lists => res.render('index', { Lists, sortby: sortby[select] }))

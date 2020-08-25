@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  return restaurantLists.findByOne({ _id, userId })
+  return restaurantLists.findOne({ _id, userId })
     .lean()
     .then((restaurant) => res.render('detail', { restaurant }))
     .catch(error => console.log(error))
@@ -28,7 +28,7 @@ router.get('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  return restaurantLists.findByOne({ _id, userId })
+  return restaurantLists.findOne({ _id, userId })
     .lean()
     .then((restaurant) => res.render('edit', { restaurant }))
     .catch(error => console.log(error))
